@@ -3,4 +3,5 @@ roles:
   - name: buluma.bootstrap
   - name: buluma.go
   - name: buluma.ca_certificates
+  - name: buluma.buildtools
 collections:
