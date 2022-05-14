@@ -1,8 +1,8 @@
 ---
 # tasks file for consul_ca
 
-- name: Create directory for CA and certificate files
-  file:
+- name: create directory for CA and certificate files
+  ansible.builtin.file:
     path: "{{ consul_ca_conf_directory }}"
     owner: "{{ consul_ca_certificate_owner }}"
     group: "{{ consul_ca_certificate_group }}"
@@ -11,8 +11,8 @@
   tags:
     - consul-ca
 
-- name: Create Consul CA configuration file
-  template:
+- name: create Consul CA configuration file
+  ansible.builtin.template:
     src: "ca-consul-config.json.j2"
     dest: "{{ consul_ca_conf_directory }}/ca-consul-config.json"
     owner: "{{ consul_ca_certificate_owner }}"
@@ -21,8 +21,8 @@
   tags:
     - consul-ca
 
-- name: Copy the Consul CA certificate request file (CSR)
-  template:
+- name: copy the Consul CA certificate request file (CSR)
+  ansible.builtin.template:
     src: "ca-consul-csr.json.j2"
     dest: "{{ consul_ca_conf_directory }}/ca-consul-csr.json"
     owner: "{{ consul_ca_certificate_owner }}"
@@ -39,16 +39,16 @@
 - name: include cfssl.yml
   ansible.builtin.import_tasks: cfssl.yml
 
-- name: Generate the Consul CA and private key
-  shell: cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul
+- name: generate the Consul CA and private key
+  ansible.builtin.shell: cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
   tags:
     - consul-ca
 
-- name: Create the Consul key CSR file
-  template:
+- name: create the Consul key CSR file
+  ansible.builtin.template:
     src: cert-consul-csr.json.j2
     dest: "{{ consul_ca_conf_directory }}/cert-consul-csr.json"
     owner: "{{ consul_ca_certificate_owner }}"
@@ -57,7 +57,7 @@
   tags:
     - consul-ca
 
-- name: Generate TLS certificate for Consul
+- name: generate TLS certificate for Consul
   shell: "cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default cert-consul-csr.json | cfssljson -bare cert-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
