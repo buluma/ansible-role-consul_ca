@@ -1,0 +1,17 @@
+---
+- name: prepare
+  hosts: all
+  become: yes
+  gather_facts: no
+
+  roles:
+    - role: buluma.bootstrap
+    - role: buluma.go
+      go_version: "1.17.3"
+
+  tasks:
+    - name: verify that Go is installed and available in the $PATH.
+      command: go version
+      environment:
+        PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
+      changed_when: false

@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include buluma.consul_ca"
+      include_role:
+        name: "buluma.consul_ca"
