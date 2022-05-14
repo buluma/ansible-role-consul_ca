@@ -10,6 +10,5 @@ exclude_paths:
   - ./.tox
   - ./.cache
 
-warn_list:  # or 'skip_list' to silence them completely
-  - fqcn-builtins  # Use FQCN for builtin actions.
+skip_list:
   - risky-shell-pipe  # Shells that use pipes should set the pipefail option.

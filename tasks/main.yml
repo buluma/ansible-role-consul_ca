@@ -31,16 +31,13 @@
   tags:
     - consul-ca
 
-# - name: Install cfssljson
-#   ansible.builtin.yum:
-#     name: golang-cfssl
-#     state: present
-
 - name: include cfssl.yml
   ansible.builtin.import_tasks: cfssl.yml
+  tags:
+    - consul-ca
 
 - name: generate the Consul CA and private key
-  ansible.builtin.shell: cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul
+  ansible.builtin.shell: "set -o pipefail && cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
@@ -58,7 +55,7 @@
     - consul-ca
 
 - name: generate TLS certificate for Consul
-  shell: "cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default cert-consul-csr.json | cfssljson -bare cert-consul"
+  ansible.builtin.shell: "set -o pipefail && cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default cert-consul-csr.json | cfssljson -bare cert-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/cert-consul-key.pem"
