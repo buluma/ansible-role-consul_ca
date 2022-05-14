@@ -6,9 +6,9 @@
 
   roles:
     - role: buluma.bootstrap
+    - role: buluma.ca_certificates
     - role: buluma.go
       go_version: "1.17.3"
-    - role: buluma.ca_certificates
 
   tasks:
     - name: verify that Go is installed and available in the $PATH.
