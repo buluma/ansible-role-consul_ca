@@ -1,8 +1,7 @@
 ---
 galaxy_info:
-  author: Michael Buluma
   role_name: consul_ca
-  namespace: buluma
+  author: buluma
   description: Install and configure Consul CA on your system.
   license: Apache-2.0
   company: ShadowNet
