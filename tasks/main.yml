@@ -1,7 +1,7 @@
 ---
 # tasks file for consul_ca
 
-- name: create directory for CA and certificate files
+- name: Create directory for CA and certificate files
   ansible.builtin.file:
     path: "{{ consul_ca_conf_directory }}"
     owner: "{{ consul_ca_certificate_owner }}"
@@ -11,7 +11,7 @@
   tags:
     - consul-ca
 
-- name: create Consul CA configuration file
+- name: Create Consul CA configuration file
   ansible.builtin.template:
     src: "ca-consul-config.json.j2"
     dest: "{{ consul_ca_conf_directory }}/ca-consul-config.json"
@@ -21,7 +21,7 @@
   tags:
     - consul-ca
 
-- name: copy the Consul CA certificate request file (CSR)
+- name: Copy the Consul CA certificate request file (CSR)
   ansible.builtin.template:
     src: "ca-consul-csr.json.j2"
     dest: "{{ consul_ca_conf_directory }}/ca-consul-csr.json"
@@ -31,12 +31,12 @@
   tags:
     - consul-ca
 
-- name: include cfssl.yml
+- name: Include cfssl.yml
   ansible.builtin.import_tasks: cfssl.yml
   tags:
     - consul-ca
 
-- name: generate the Consul CA and private key
+- name: Generate the Consul CA and private key
   ansible.builtin.shell: "cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
@@ -44,7 +44,7 @@
   tags:
     - consul-ca
 
-- name: create the Consul key CSR file
+- name: Create the Consul key CSR file
   ansible.builtin.template:
     src: cert-consul-csr.json.j2
     dest: "{{ consul_ca_conf_directory }}/cert-consul-csr.json"
@@ -54,7 +54,7 @@
   tags:
     - consul-ca
 
-- name: generate TLS certificate for Consul
+- name: Generate TLS certificate for Consul
   ansible.builtin.shell: "cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default cert-consul-csr.json | cfssljson -bare cert-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
