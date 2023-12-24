@@ -1,10 +1,10 @@
-# [Ansible role consul_ca](#consul_ca)
+# Ansible role [consul_ca](https://galaxy.ansible.com/ui/standalone/roles/buluma/consul_ca/documentation)
 
 Install and configure Consul CA on your system.
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-consul_ca/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-consul_ca/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-consul_ca.svg)](https://github.com/buluma/ansible-role-consul_ca/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-consul_ca.svg)](https://github.com/buluma/ansible-role-consul_ca/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-consul_ca.svg)](https://github.com/buluma/ansible-role-consul_ca/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-consul_ca/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-consul_ca/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-consul_ca.svg)](https://github.com/buluma/ansible-role-consul_ca/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-consul_ca.svg)](https://github.com/buluma/ansible-role-consul_ca/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-consul_ca.svg)](https://github.com/buluma/ansible-role-consul_ca/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/consul_ca)](https://galaxy.ansible.com/ui/standalone/roles/buluma/consul_ca/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -166,9 +166,7 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
