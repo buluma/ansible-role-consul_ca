@@ -1,5 +1,5 @@
 ---
-- name: Downloading cfssl binaries
+- name: cfssl | Downloading cfssl binaries
   ansible.builtin.get_url:
     url: "https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/{{ item }}_{{ cfssl_version }}_{{ cfssl_os }}_{{ cfssl_arch }}"
     dest: "{{ cfssl_bin_directory }}/{{ item }}"
