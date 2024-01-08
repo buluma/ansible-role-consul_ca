@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.0](https://github.com/buluma/ansible-role-consul_ca/tree/0.2.0) (2024-01-02)
+
+[Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.1.3...0.2.0)
+
 ## [0.1.3](https://github.com/buluma/ansible-role-consul_ca/tree/0.1.3) (2023-12-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.1.2...0.1.3)
