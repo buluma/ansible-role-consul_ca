@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/buluma/ansible-role-consul_ca/tree/0.3.0) (2024-01-09)
+
+[Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.2.0...0.3.0)
+
+**Merged pull requests:**
+
+- Bump buluma/gh-action-auto-merge-dependabot-updates from 1.0.5 to 1.0.8 [\#8](https://github.com/buluma/ansible-role-consul_ca/pull/8) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [0.2.0](https://github.com/buluma/ansible-role-consul_ca/tree/0.2.0) (2024-01-02)
 
 [Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.1.3...0.2.0)
