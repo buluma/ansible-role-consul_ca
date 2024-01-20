@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump buluma/molecule-action from 6.0.1 to 6.0.3 [\#10](https://github.com/buluma/ansible-role-consul_ca/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump buluma/molecule-action from 6.0.0 to 6.0.1 [\#9](https://github.com/buluma/ansible-role-consul_ca/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [0.3.0](https://github.com/buluma/ansible-role-consul_ca/tree/0.3.0) (2024-01-09)
