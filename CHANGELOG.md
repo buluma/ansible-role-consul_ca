@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/buluma/ansible-role-consul_ca/tree/HEAD)
+
+[Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.4.1...HEAD)
+
+**Merged pull requests:**
+
+- Bump release-drafter/release-drafter from 5 to 6 [\#11](https://github.com/buluma/ansible-role-consul_ca/pull/11) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [0.4.1](https://github.com/buluma/ansible-role-consul_ca/tree/0.4.1) (2024-01-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.4.0...0.4.1)
