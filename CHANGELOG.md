@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/buluma/ansible-role-consul_ca/tree/HEAD)
+## [24.3.31](https://github.com/buluma/ansible-role-consul_ca/tree/24.3.31) (2024-03-29)
 
-[Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.4.1...HEAD)
+[Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.4.1...24.3.31)
 
 **Merged pull requests:**
 
