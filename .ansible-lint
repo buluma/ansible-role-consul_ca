@@ -12,9 +12,5 @@ exclude_paths:
   - .github
   - requirements.yml
 
-skip_list:
-  - yaml[truthy]
-  - risky-shell-pipe
-
 enable_list:
   - name[prefix]
