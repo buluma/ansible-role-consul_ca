@@ -36,23 +36,23 @@
   tags:
     - consul-ca
 
-# - name: Generate the Consul CA and private key
-#   ansible.builtin.shell: "cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul"
-#   args:
-#     chdir: "{{ consul_ca_conf_directory }}"
-#     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
-#   tags:
-#     - consul-ca
-
 - name: Generate the Consul CA and private key
-  ansible.builtin.shell: |
-    set -o pipefail
-    cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul
+  ansible.builtin.shell: "cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
   tags:
     - consul-ca
+
+# - name: Generate the Consul CA and private key
+#   ansible.builtin.shell: |
+#     set -o pipefail
+#     cfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul
+#   args:
+#     chdir: "{{ consul_ca_conf_directory }}"
+#     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
+#   tags:
+#     - consul-ca
 
 
 - name: Create the Consul key CSR file
