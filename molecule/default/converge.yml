@@ -1,6 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  become: true
+  gather_facts: true
   tasks:
     - name: "Include buluma.consul_ca"
       ansible.builtin.include_role:
