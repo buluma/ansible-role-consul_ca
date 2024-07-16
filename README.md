@@ -14,6 +14,8 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 ---
 - name: Converge
   hosts: all
+  become: true
+  gather_facts: true
   tasks:
     - name: "Include buluma.consul_ca"
       ansible.builtin.include_role:
@@ -34,7 +36,7 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
     - role: buluma.ca_certificates
     - role: buluma.core_dependencies
     - role: buluma.go
-      go_version: "1.17.3"
+      go_version: "1.22.5"
 
   tasks:
     - name: verify that Go is installed and available in the $PATH.
@@ -92,7 +94,7 @@ consul_csr_names_ou: "BY"
 consul_csr_names_st: "Bayern"
 
 # Specifies the version of CFSSL toolkit we want to download and use
-cfssl_version: "1.6.1"
+cfssl_version: "1.6.5"
 
 # Checksum file
 cfssl_checksum_url: "https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt"
@@ -144,7 +146,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 |---------|----|
 |[Amazon](https://hub.docker.com/r/buluma/amazonlinux)|Candidate|
 |[Debian](https://hub.docker.com/r/buluma/debian)|bullseye|
-|[EL](https://hub.docker.com/r/buluma/enterpriselinux)|all|
 |[Fedora](https://hub.docker.com/r/buluma/fedora)|all|
 |[Ubuntu](https://hub.docker.com/r/buluma/ubuntu)|all|
 
