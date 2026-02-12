@@ -1,27 +1,23 @@
----
 galaxy_info:
   role_name: consul_ca
   author: buluma
   description: Install and configure Consul CA on your system.
   license: Apache-2.0
   company: ShadowNet
-  min_ansible_version: "2.12"
-
+  min_ansible_version: '2.12'
   platforms:
-    - name: Amazon
-      versions:
-        - Candidate
-    - name: Debian
-      versions:
-        - bullseye
-    - name: Fedora
-      versions:
-        - all
-    - name: Ubuntu
-      versions:
-        - all
-
+  - name: Amazon
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
   galaxy_tags:
-    - consul
-
+  - consul
 dependencies: []
