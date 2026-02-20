@@ -1,0 +1,17 @@
+digraph PhiloDilemma {
+  label = "Michael Buluma" ;
+  overlap=false
+  {
+    "consul_ca" [fillcolor=yellow style=filled penwidth=3]
+    "buluma.bootstrap" [fillcolor=green style=filled]
+    "buluma.go" [fillcolor=green style=filled]
+    "" [fillcolor=green style=filled]
+    "buluma.ca_certificates" [fillcolor=green style=filled]
+    "buluma.core_dependencies" [fillcolor=green style=filled]
+  }
+  "consul_ca" -> "buluma.bootstrap"
+  "consul_ca" -> "buluma.go"
+  "consul_ca" -> ""
+  "consul_ca" -> "buluma.ca_certificates"
+  "consul_ca" -> "buluma.core_dependencies"
+}
