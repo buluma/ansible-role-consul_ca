@@ -39,8 +39,8 @@ The machine needs to be prepared. In CI this is done using [`molecule/default/pr
       go_version: "1.22.5"
 
   tasks:
-    - name: verify that Go is installed and available in the $PATH.
-      command: go version
+    - name: Verify that Go is installed and available in the $PATH.
+      ansible.builtin.command: go version
       environment:
         PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
       changed_when: false
