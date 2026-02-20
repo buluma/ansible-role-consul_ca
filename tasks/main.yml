@@ -6,7 +6,7 @@
     path: "{{ consul_ca_conf_directory }}"
     owner: "{{ consul_ca_certificate_owner }}"
     group: "{{ consul_ca_certificate_group }}"
-    mode: '0755'
+    mode: "0755"
     state: directory
   tags:
     - consul-ca
@@ -17,7 +17,7 @@
     dest: "{{ consul_ca_conf_directory }}/ca-consul-config.json"
     owner: "{{ consul_ca_certificate_owner }}"
     group: "{{ consul_ca_certificate_group }}"
-    mode: '0600'
+    mode: "0600"
   tags:
     - consul-ca
 
@@ -27,7 +27,7 @@
     dest: "{{ consul_ca_conf_directory }}/ca-consul-csr.json"
     owner: "{{ consul_ca_certificate_owner }}"
     group: "{{ consul_ca_certificate_group }}"
-    mode: '0600'
+    mode: "0600"
   tags:
     - consul-ca
 
@@ -54,19 +54,19 @@
 #   tags:
 #     - consul-ca
 
-
 - name: Create the Consul key CSR file
   ansible.builtin.template:
     src: cert-consul-csr.json.j2
     dest: "{{ consul_ca_conf_directory }}/cert-consul-csr.json"
     owner: "{{ consul_ca_certificate_owner }}"
     group: "{{ consul_ca_certificate_group }}"
-    mode: '0600'
+    mode: "0600"
   tags:
     - consul-ca
 
 - name: Generate TLS certificate for Consul
-  ansible.builtin.shell: "cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default cert-consul-csr.json | cfssljson -bare cert-consul"
+  ansible.builtin.shell: "cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default cert-consul-csr.json
+    | cfssljson -bare cert-consul"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/cert-consul-key.pem"
