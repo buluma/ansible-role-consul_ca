@@ -2,7 +2,6 @@
 roles:
   - name: buluma.bootstrap
   - name: buluma.go
-    version: '0.2.0'
+    version: "0.2.0"
   - name: buluma.ca_certificates
   - name: buluma.core_dependencies
-collections:
