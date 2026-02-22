@@ -1,12 +1,14 @@
 ---
 - name: cfssl | Downloading cfssl binaries
   ansible.builtin.get_url:
-    url: "https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/{{ item }}_{{ cfssl_version }}_{{ cfssl_os }}_{{ cfssl_arch }}"
+    checksum: sha256:{{ cfssl_checksum_url }}
     dest: "{{ cfssl_bin_directory }}/{{ item }}"
+    group: "{{ cfssl_group }}"
     mode: "0755"
     owner: "{{ cfssl_owner }}"
-    group: "{{ cfssl_group }}"
-    checksum: "sha256:{{ cfssl_checksum_url }}"
+    url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/{{ item }}_{{ cfssl_version }}_{{ cfssl_os }}_{{ cfssl_arch }}
+  tags:
+    - cfssl
   with_items:
     - cfssl
     - cfssl-bundle
@@ -16,5 +18,3 @@
     - cfssljson
     - mkbundle
     - multirootca
-  tags:
-    - cfssl

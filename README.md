@@ -11,39 +11,35 @@ Install and configure Consul CA on your system.
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
----
-- name: Converge
-  hosts: all
-  become: true
+- become: true
   gather_facts: true
+  hosts: all
+  name: Converge
   tasks:
-    - name: "Include buluma.consul_ca"
-      ansible.builtin.include_role:
-        name: "buluma.consul_ca"
+  - ansible.builtin.include_role:
+      name: buluma.consul_ca
+    name: Include buluma.consul_ca
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/molecule/default/prepare.yml):
 
 ```yaml
----
-- name: Prepare
-  hosts: all
-  become: true
+- become: true
   gather_facts: false
-
+  hosts: all
+  name: Prepare
   roles:
-    - role: buluma.bootstrap
-    - role: buluma.ca_certificates
-    - role: buluma.core_dependencies
-    - role: buluma.go
-      go_version: "1.22.5"
-
+  - role: buluma.bootstrap
+  - role: buluma.ca_certificates
+  - role: buluma.core_dependencies
+  - go_version: 1.22.5
+    role: buluma.go
   tasks:
-    - name: Verify that Go is installed and available in the $PATH.
-      ansible.builtin.command: go version
-      environment:
-        PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
-      changed_when: false
+  - ansible.builtin.command: go version
+    changed_when: false
+    environment:
+      PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
+    name: Verify that Go is installed and available in the $PATH.
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -53,66 +49,34 @@ Also see a [full explanation and example](https://buluma.github.io/how-to-use-th
 The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/defaults/main.yml):
 
 ```yaml
----
-# defaults file for consul_ca
-# Where to store the CA and certificate files. By default this
-# will expand to user's LOCAL $HOME (the user that run's "ansible-playbook ..."
-# plus "/consul/ssl". That means if the user's $HOME directory is e.g.
-# "/home/da_user" then "consul_ca_conf_directory" will have a value of
-# "/home/da_user/consul/ssl".
-consul_ca_conf_directory: "{{ '~/consul/ssl' | expanduser }}"
-# The user who own's the certificate directory and files
-consul_ca_certificate_owner: "root"
-# The group which own's the certificate directory and files
-consul_ca_certificate_group: "root"
-
-# Expiry for Consul root certificate
-ca_consul_expiry: "87600h"
-
-#
-# Certificate authority for Consul certificates
-#
-ca_consul_csr_cn: "Consul"
-ca_consul_csr_key_algo: "rsa"
-ca_consul_csr_key_size: "2048"
-ca_consul_csr_names_c: "DE"
-ca_consul_csr_names_l: "The_Internet"
-ca_consul_csr_names_o: "Consul"
-ca_consul_csr_names_ou: "BY"
-ca_consul_csr_names_st: "Bayern"
-
-#
-# CSR parameter for Consul certificate
-#
-consul_csr_cn: "server.dc1.consul"
-consul_csr_key_algo: "rsa"
-consul_csr_key_size: "2048"
-consul_csr_names_c: "DE"
-consul_csr_names_l: "The_Internet"
-consul_csr_names_o: "Consul"
-consul_csr_names_ou: "BY"
-consul_csr_names_st: "Bayern"
-
-# Specifies the version of CFSSL toolkit we want to download and use
-cfssl_version: "1.6.5"
-
-# Checksum file
-cfssl_checksum_url: "https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt"
-
-# The directory where CFSSL binaries will be installed
-cfssl_bin_directory: "/usr/local/bin"
-
-# Owner of the cfssl binaries
-cfssl_owner: "root"
-
-# Group of cfssl binaries
-cfssl_group: "root"
-
-# Operarting system on which "cfssl/cfssljson" should run on
-cfssl_os: "linux" # use "darwin" for MacOS X, "windows" for Windows
-
-# Processor architecture "cfssl/cfssljson" should run on
-cfssl_arch: "amd64" # the only supported architecture at the moment
+ca_consul_csr_cn: Consul
+ca_consul_csr_key_algo: rsa
+ca_consul_csr_key_size: '2048'
+ca_consul_csr_names_c: DE
+ca_consul_csr_names_l: The_Internet
+ca_consul_csr_names_o: Consul
+ca_consul_csr_names_ou: BY
+ca_consul_csr_names_st: Bayern
+ca_consul_expiry: 87600h
+cfssl_arch: amd64
+cfssl_bin_directory: /usr/local/bin
+cfssl_checksum_url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version
+  }}/cfssl_{{ cfssl_version }}_checksums.txt
+cfssl_group: root
+cfssl_os: linux
+cfssl_owner: root
+cfssl_version: 1.6.5
+consul_ca_certificate_group: root
+consul_ca_certificate_owner: root
+consul_ca_conf_directory: '{{ ''~/consul/ssl'' | expanduser }}'
+consul_csr_cn: server.dc1.consul
+consul_csr_key_algo: rsa
+consul_csr_key_size: '2048'
+consul_csr_names_c: DE
+consul_csr_names_l: The_Internet
+consul_csr_names_o: Consul
+consul_csr_names_ou: BY
+consul_csr_names_st: Bayern
 ```
 
 ## [Requirements](#requirements)
