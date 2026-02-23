@@ -12,36 +12,36 @@ This example is taken from [`molecule/default/converge.yml`](https://github.com/
 
 ```yaml
 ---
-  - become: true
-    gather_facts: true
-    hosts: all
-    name: Converge
-    tasks:
-      - ansible.builtin.include_role:
-          name: buluma.consul_ca
-        name: Include buluma.consul_ca
+- become: true
+  gather_facts: true
+  hosts: all
+  name: Converge
+  tasks:
+  - ansible.builtin.include_role:
+      name: buluma.consul_ca
+    name: Include buluma.consul_ca
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/molecule/default/prepare.yml):
 
 ```yaml
 ---
-  - become: true
-    gather_facts: false
-    hosts: all
-    name: Prepare
-    roles:
-      - role: buluma.bootstrap
-      - role: buluma.ca_certificates
-      - role: buluma.core_dependencies
-      - go_version: 1.22.5
-        role: buluma.go
-    tasks:
-      - ansible.builtin.command: go version
-        changed_when: false
-        environment:
-          PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
-        name: Verify that Go is installed and available in the $PATH.
+- become: true
+  gather_facts: false
+  hosts: all
+  name: Prepare
+  roles:
+  - role: buluma.bootstrap
+  - role: buluma.ca_certificates
+  - role: buluma.core_dependencies
+  - go_version: 1.22.5
+    role: buluma.go
+  tasks:
+  - ansible.builtin.command: go version
+    changed_when: false
+    environment:
+      PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
+    name: Verify that Go is installed and available in the $PATH.
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
