@@ -1,8 +1,9 @@
-- become: true
-  gather_facts: true
-  hosts: all
-  name: Converge
-  tasks:
-  - ansible.builtin.include_role:
-      name: buluma.consul_ca
-    name: Include buluma.consul_ca
+---
+  - become: true
+    gather_facts: true
+    hosts: all
+    name: Converge
+    tasks:
+      - ansible.builtin.include_role:
+          name: buluma.consul_ca
+        name: Include buluma.consul_ca

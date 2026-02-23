@@ -11,35 +11,37 @@ Install and configure Consul CA on your system.
 This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
 
 ```yaml
-- become: true
-  gather_facts: true
-  hosts: all
-  name: Converge
-  tasks:
-  - ansible.builtin.include_role:
-      name: buluma.consul_ca
-    name: Include buluma.consul_ca
+---
+  - become: true
+    gather_facts: true
+    hosts: all
+    name: Converge
+    tasks:
+      - ansible.builtin.include_role:
+          name: buluma.consul_ca
+        name: Include buluma.consul_ca
 ```
 
 The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/molecule/default/prepare.yml):
 
 ```yaml
-- become: true
-  gather_facts: false
-  hosts: all
-  name: Prepare
-  roles:
-  - role: buluma.bootstrap
-  - role: buluma.ca_certificates
-  - role: buluma.core_dependencies
-  - go_version: 1.22.5
-    role: buluma.go
-  tasks:
-  - ansible.builtin.command: go version
-    changed_when: false
-    environment:
-      PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
-    name: Verify that Go is installed and available in the $PATH.
+---
+  - become: true
+    gather_facts: false
+    hosts: all
+    name: Prepare
+    roles:
+      - role: buluma.bootstrap
+      - role: buluma.ca_certificates
+      - role: buluma.core_dependencies
+      - go_version: 1.22.5
+        role: buluma.go
+    tasks:
+      - ansible.builtin.command: go version
+        changed_when: false
+        environment:
+          PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
+        name: Verify that Go is installed and available in the $PATH.
 ```
 
 Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
@@ -49,9 +51,10 @@ Also see a [full explanation and example](https://buluma.github.io/how-to-use-th
 The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-consul_ca/blob/master/defaults/main.yml):
 
 ```yaml
+---
 ca_consul_csr_cn: Consul
 ca_consul_csr_key_algo: rsa
-ca_consul_csr_key_size: '2048'
+ca_consul_csr_key_size: "2048"
 ca_consul_csr_names_c: DE
 ca_consul_csr_names_l: The_Internet
 ca_consul_csr_names_o: Consul
@@ -60,18 +63,18 @@ ca_consul_csr_names_st: Bayern
 ca_consul_expiry: 87600h
 cfssl_arch: amd64
 cfssl_bin_directory: /usr/local/bin
-cfssl_checksum_url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version
-  }}/cfssl_{{ cfssl_version }}_checksums.txt
+cfssl_checksum_url: https://github.com/cloudflare/cfssl/releases/download/v{{ 
+  cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt
 cfssl_group: root
 cfssl_os: linux
 cfssl_owner: root
 cfssl_version: 1.6.5
 consul_ca_certificate_group: root
 consul_ca_certificate_owner: root
-consul_ca_conf_directory: '{{ ''~/consul/ssl'' | expanduser }}'
+consul_ca_conf_directory: "{{ '~/consul/ssl' | expanduser }}"
 consul_csr_cn: server.dc1.consul
 consul_csr_key_algo: rsa
-consul_csr_key_size: '2048'
+consul_csr_key_size: "2048"
 consul_csr_names_c: DE
 consul_csr_names_l: The_Internet
 consul_csr_names_o: Consul

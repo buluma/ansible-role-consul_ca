@@ -1,8 +1,9 @@
-- become: true
-  gather_facts: false
-  hosts: all
-  name: Verify
-  tasks:
-  - ansible.builtin.assert:
-      that: true
-    name: Example assertion
+---
+  - become: true
+    gather_facts: false
+    hosts: all
+    name: Verify
+    tasks:
+      - ansible.builtin.assert:
+          that: true
+        name: Example assertion
