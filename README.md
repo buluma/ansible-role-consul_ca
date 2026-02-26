@@ -63,8 +63,7 @@ ca_consul_csr_names_st: Bayern
 ca_consul_expiry: 87600h
 cfssl_arch: amd64
 cfssl_bin_directory: /usr/local/bin
-cfssl_checksum_url: https://github.com/cloudflare/cfssl/releases/download/v{{ 
-  cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt
+cfssl_checksum_url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt
 cfssl_group: root
 cfssl_os: linux
 cfssl_owner: root
