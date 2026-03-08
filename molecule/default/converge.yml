@@ -4,6 +4,6 @@
   hosts: all
   name: Converge
   tasks:
-  - ansible.builtin.include_role:
-      name: buluma.consul_ca
-    name: Include buluma.consul_ca
+    - ansible.builtin.include_role:
+        name: buluma.consul_ca
+      name: Include buluma.consul_ca

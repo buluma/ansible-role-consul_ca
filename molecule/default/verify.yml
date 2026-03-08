@@ -4,6 +4,6 @@
   hosts: all
   name: Verify
   tasks:
-  - ansible.builtin.assert:
-      that: true
-    name: Example assertion
+    - ansible.builtin.assert:
+        that: true
+      name: Example assertion
