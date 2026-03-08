@@ -63,11 +63,11 @@ ca_consul_csr_names_st: Bayern
 ca_consul_expiry: 87600h
 cfssl_arch: amd64
 cfssl_bin_directory: /usr/local/bin
-cfssl_checksum_url: https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt
+cfssl_checksum_url: "https://github.com/cloudflare/cfssl/releases/download/v{{ cfssl_version }}/cfssl_{{ cfssl_version }}_checksums.txt"
 cfssl_group: root
 cfssl_os: linux
 cfssl_owner: root
-cfssl_version: 1.6.5
+cfssl_version: "1.6.5"
 consul_ca_certificate_group: root
 consul_ca_certificate_owner: root
 consul_ca_conf_directory: "{{ '~/consul/ssl' | expanduser }}"
@@ -130,3 +130,4 @@ If you find issues, please register them on [GitHub](https://github.com/buluma/a
 ## [Author Information](#author-information)
 
 [buluma](https://buluma.github.io/)
+
