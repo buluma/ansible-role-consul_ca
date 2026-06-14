@@ -1,6 +1,6 @@
 ---
 name: pre-commit
-true:
+"on":
   pull_request:
     branches:
       - master
