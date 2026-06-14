@@ -13,5 +13,5 @@
     - ansible.builtin.command: go version
       changed_when: false
       environment:
-        PATH: /usr/local/go/bin:{{ ansible_env.PATH }}
+        PATH: /usr/local/go/bin:{{ ansible_facts.env.PATH }}
       name: Verify that Go is installed and available in the $PATH.
