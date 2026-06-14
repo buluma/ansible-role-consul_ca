@@ -46,13 +46,12 @@
     src: cert-consul-csr.json.j2
   tags:
     - consul-ca
-- ansible.builtin.shell:
-    cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default
-    cert-consul-csr.json | cfssljson -bare cert-consul
-  args:
+- name: Generate TLS certificate for Consul
+  ansible.builtin.shell:
+    cmd: |
+      cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }} -profile=default
+      cert-consul-csr.json | cfssljson -bare cert-consul
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/cert-consul-key.pem"
-  name: Generate TLS certificate for Consul
   tags:
     - consul-ca
-    - skip_ansible_lint
