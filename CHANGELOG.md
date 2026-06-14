@@ -8,7 +8,6 @@
 
 - Bump actions/setup-python from 5 to 6 [\#19](https://github.com/buluma/ansible-role-consul_ca/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump actions/checkout from 4 to 6 [\#18](https://github.com/buluma/ansible-role-consul_ca/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Bump buluma/molecule-action from 6.0.0 to 6.0.1 [\#9](https://github.com/buluma/ansible-role-consul_ca/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [24.3.31](https://github.com/buluma/ansible-role-consul_ca/tree/24.3.31) (2024-03-29)
 
@@ -32,6 +31,7 @@
 **Merged pull requests:**
 
 - Bump buluma/molecule-action from 6.0.1 to 6.0.3 [\#10](https://github.com/buluma/ansible-role-consul_ca/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump buluma/molecule-action from 6.0.0 to 6.0.1 [\#9](https://github.com/buluma/ansible-role-consul_ca/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [0.3.0](https://github.com/buluma/ansible-role-consul_ca/tree/0.3.0) (2024-01-09)
 
