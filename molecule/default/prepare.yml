@@ -7,7 +7,7 @@
     - role: buluma.bootstrap
     - role: buluma.ca_certificates
     - role: buluma.core_dependencies
-    - go_version: 1.22.5
+    - go_version: 1.22.12
       role: buluma.go
   tasks:
     - ansible.builtin.command: go version
