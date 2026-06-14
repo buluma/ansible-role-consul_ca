@@ -1,5 +1,14 @@
 # Changelog
 
+## [26.6.0](https://github.com/buluma/ansible-role-consul_ca/tree/26.6.0) (2026-06-14)
+
+[Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/24.3.31...26.6.0)
+
+**Merged pull requests:**
+
+- Bump actions/setup-python from 5 to 6 [\#19](https://github.com/buluma/ansible-role-consul_ca/pull/19) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 4 to 6 [\#18](https://github.com/buluma/ansible-role-consul_ca/pull/18) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [24.3.31](https://github.com/buluma/ansible-role-consul_ca/tree/24.3.31) (2024-03-29)
 
 [Full Changelog](https://github.com/buluma/ansible-role-consul_ca/compare/0.4.1...24.3.31)
