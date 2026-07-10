@@ -3,15 +3,15 @@
   hosts: all
   become: true
   gather_facts: false
+
+  pre_tasks:
+    - name: Install sudo if missing
+      ansible.builtin.raw: "{{ ansible_pkg_mgr | default('dnf') }} install -y sudo}"
+      become: false
+      changed_when: false
+      failed_when: false
+
   roles:
     - role: buluma.bootstrap
     - role: buluma.ca_certificates
     - role: buluma.core_dependencies
-    - go_version: 1.22.12
-      role: buluma.go
-  tasks:
-    - ansible.builtin.command: go version
-      changed_when: false
-      environment:
-        PATH: /usr/local/go/bin:{{ ansible_facts['env'].PATH }}
-      name: Verify that Go is installed and available in the $PATH.
