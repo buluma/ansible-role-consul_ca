@@ -35,6 +35,7 @@
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
+    executable: /bin/bash
   tags:
     - consul-ca
 - name: Create the Consul key CSR file
@@ -51,5 +52,6 @@
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/cert-consul-key.pem"
+    executable: /bin/bash
   tags:
     - consul-ca
