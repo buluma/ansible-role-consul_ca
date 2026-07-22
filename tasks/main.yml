@@ -31,7 +31,7 @@
   tags:
     - consul-ca
 - name: Generate the Consul CA and private key
-  ansible.builtin.shell: "set -euo pipefail\ncfssl gencert -initca ca-consul-csr.json | cfssljson -bare ca-consul\n"
+  ansible.builtin.shell: "set -euo pipefail\n{{ cfssl_bin_directory }}/cfssl gencert -initca ca-consul-csr.json | {{ cfssl_bin_directory }}/cfssljson -bare ca-consul\n"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/ca-consul-key.pem"
@@ -48,8 +48,8 @@
   tags:
     - consul-ca
 - name: Generate TLS certificate for Consul
-  ansible.builtin.shell: "set -euo pipefail\ncfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }}
-    -profile=default cert-consul-csr.json | cfssljson -bare cert-consul\n"
+  ansible.builtin.shell: "set -euo pipefail\n{{ cfssl_bin_directory }}/cfssl gencert -ca=ca-consul.pem -ca-key=ca-consul-key.pem -config=ca-consul-config.json -hostname={{ consul_csr_cn }}
+    -profile=default cert-consul-csr.json | {{ cfssl_bin_directory }}/cfssljson -bare cert-consul\n"
   args:
     chdir: "{{ consul_ca_conf_directory }}"
     creates: "{{ consul_ca_conf_directory }}/cert-consul-key.pem"
